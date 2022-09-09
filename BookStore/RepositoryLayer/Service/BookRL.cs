@@ -165,6 +165,10 @@ namespace RepositoryLayer.Service
                 {
                     throw;
                 }
+                finally
+                {
+                    sqlConnection.Close();
+                }
         }
 
         public IEnumerable<GetBookModel> GetBookById(int BookID)
@@ -200,6 +204,10 @@ namespace RepositoryLayer.Service
                 catch (Exception)
                 {
                     throw;
+                }
+                finally
+                {
+                    sqlConnection.Close();
                 }
         }
     }
