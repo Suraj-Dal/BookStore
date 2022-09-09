@@ -18,7 +18,7 @@ namespace BookStore.Controllers
         }
         [HttpPost]
         [Route("register")]
-        public IActionResult RegisterUSer(UserRegistrationModel userModel)
+        public IActionResult RegisterUser(UserRegistrationModel userModel)
         {
             try
             {
