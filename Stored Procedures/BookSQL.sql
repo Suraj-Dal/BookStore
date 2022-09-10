@@ -91,3 +91,22 @@ AS
 		DELETE FROM BookTable
 		WHERE BookID = @BookID
 	END
+
+GO
+CREATE PROCEDURE GetBook
+		@BookID int
+AS
+	BEGIN
+		SELECT 
+			BookName,
+			AuthorName,
+			rating,
+			PeopleRated,
+			Price,
+			DiscountPrice,
+			Description,
+			Quantity,
+			BookImage
+		FROM BookTable
+		WHERE BookID = @BookID
+	END
