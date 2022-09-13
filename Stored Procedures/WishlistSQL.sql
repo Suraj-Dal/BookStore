@@ -11,7 +11,7 @@ ALTER TABLE Wishlist ADD UserID int Not Null, BookID int Not Null;
 
 alter table Wishlist add constraint fk_UserID_Wishlist foreign key(UserID) references UserTable(UserID);
 
-alter table Wishlist add constraint fk_BookID_Wishlist foreign key(BookID) references BookTable(BookID);
+alter table Wishlist add constraint fk_BookID_Wishlist foreign key(BookID) references BookTable(BookID) ON DELETE CASCADE ON UPDATE CASCADE;
 
 GO
 CREATE PROCEDURE InsertIntoWishlist

@@ -11,6 +11,10 @@ CREATE TABLE FeedbackTable
 
 SELECT * FROM FeedbackTable
 
+alter table FeedbackTable add constraint fk_UserID_FeedbackTable foreign key(UserID) references UserTable(UserID);
+alter table FeedbackTable add constraint fk_BookID_FeedbackTable foreign key(BookID) references BookTable(BookID) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
 GO
 CREATE PROCEDURE InsertIntoFeedbackTable
 		@rating int,

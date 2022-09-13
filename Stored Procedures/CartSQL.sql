@@ -12,7 +12,7 @@ ALTER TABLE CartTable ADD UserID int Not Null, BookID int Not Null;
 
 alter table CartTable add constraint fk_UserID foreign key(UserID) references UserTable(UserID);
 
-alter table CartTable add constraint fk_BookID foreign key(BookID) references BookTable(BookID);
+alter table CartTable add constraint fk_BookID foreign key(BookID) references BookTable(BookID) ON DELETE CASCADE ON UPDATE CASCADE;
 
 GO
 CREATE PROCEDURE InsertIntoCartTable
