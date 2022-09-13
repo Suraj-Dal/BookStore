@@ -61,7 +61,7 @@ namespace ManagerLayer.Service
                 throw;
             }
         }
-        public IEnumerable<GetBookModel> GetBookById(int BookID)
+        public GetBookModel GetBookById(int BookID)
         {
             try
             {

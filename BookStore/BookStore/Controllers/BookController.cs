@@ -108,7 +108,7 @@ namespace BookStore.Controllers
             }
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         [Route("getById")]
         public IActionResult GetBookById(int BookID)

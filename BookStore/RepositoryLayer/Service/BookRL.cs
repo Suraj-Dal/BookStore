@@ -171,35 +171,32 @@ namespace RepositoryLayer.Service
                 }
         }
 
-        public IEnumerable<GetBookModel> GetBookById(int BookID)
+        public GetBookModel GetBookById(int BookID)
         {
             sqlConnection = new SqlConnection(this.Configuration.GetConnectionString("BookStore"));
             using (sqlConnection)
                 try
                 {
-                    SqlCommand sqlCommand = new SqlCommand("dbo.GetBook", sqlConnection);
-
-                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    
                     sqlConnection.Open();
-                    sqlCommand.Parameters.AddWithValue("@BookID", BookID);
+                    String query = "SELECT BookID, BookName, AuthorName, rating, PeopleRated, Price, DiscountPrice, Description, Quantity, BookImage FROM BookTable WHERE BookID = '" + BookID + "'";
+                    SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
                     sqlDataReader = sqlCommand.ExecuteReader();
+                    GetBookModel bookModel = new GetBookModel();
                     while (sqlDataReader.Read())
                     {
-                        books.Add(new GetBookModel()
-                        {
-                            BookID = sqlDataReader["BookID"].ToString(),
-                            BookName = sqlDataReader["BookName"].ToString(),
-                            AuthorName = sqlDataReader["AuthorName"].ToString(),
-                            rating = sqlDataReader["rating"].ToString(),
-                            PeopleRated = sqlDataReader["PeopleRated"].ToString(),
-                            Price = sqlDataReader["Price"].ToString(),
-                            DiscountPrice = sqlDataReader["DiscountPrice"].ToString(),
-                            Description = sqlDataReader["Description"].ToString(),
-                            Quantity = sqlDataReader["Quantity"].ToString(),
-                            BookImage = sqlDataReader["BookImage"].ToString()
-                        });
+                        bookModel.BookID = sqlDataReader["BookID"].ToString();
+                        bookModel.BookName = sqlDataReader["BookName"].ToString();
+                        bookModel.AuthorName = sqlDataReader["AuthorName"].ToString();
+                        bookModel.rating = sqlDataReader["rating"].ToString();
+                        bookModel.PeopleRated = sqlDataReader["PeopleRated"].ToString();
+                        bookModel.Price = sqlDataReader["Price"].ToString();
+                        bookModel.DiscountPrice = sqlDataReader["DiscountPrice"].ToString();
+                        bookModel.Description = sqlDataReader["Description"].ToString();
+                        bookModel.Quantity = sqlDataReader["Quantity"].ToString();
+                        bookModel.BookImage = sqlDataReader["BookImage"].ToString();
                     }
-                    return books;
+                    return bookModel;
                 }
                 catch (Exception)
                 {

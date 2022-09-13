@@ -11,6 +11,6 @@ namespace RepositoryLayer.Interface
         public bool UpdateBook(BookModel bookModel, int BookID);
         public bool DeleteBook(int BookID);
         public IEnumerable<GetBookModel> GetAllBooks();
-        public IEnumerable<GetBookModel> GetBookById(int BookID);
+        public GetBookModel GetBookById(int BookID);
     }
 }
